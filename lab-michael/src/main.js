@@ -2,37 +2,40 @@ import './style/style.scss'
 
 import React from 'react'
 import ReactDom from 'react-dom'
+import faker from 'faker'
+import cowsay from 'cowsay-browser'
+
 
 class App extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      title: 'hello cows',
+      content: ''
+      }
+      this.handleClick = this.handleClick.bind(this);
   }
 
 
-
+  handleClick(e){
+    this.setState((state)=>{
+        return {
+          content: cowsay.think({
+            text : "I'm a moooodule",
+            e : "oO",
+            T : "U "})
+        }
+    })
+  }
   render(){
     return (
       <div>
-      <h1> cool </h1>
-      <p>sweet slugs </p>
+      <h1> Generate Cowsay Lorem </h1>
+      <p onClick={this.handleClick}>
+      Click Me!! <pre>{this.state.content}</pre> </p>
       </div>
     );
   };
 }
 
-
-class Navbar extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
-  render(){
-    return (
-      <header className='hello-navbar'>
-        <h1> counter </h1>
-      </header>
-    );
-  }
-}
-
-ReactDom.render(<App />, document.getElementById='cowsay');
+ReactDom.render(<App />, document.getElementById('cowsay'));
