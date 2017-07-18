@@ -2,8 +2,8 @@ import './style/style.scss'
 
 import React from 'react'
 import ReactDom from 'react-dom'
-import faker from 'faker'
 import cowsay from 'cowsay-browser'
+import faker from 'faker'
 
 
 class App extends React.Component {
@@ -21,7 +21,7 @@ class App extends React.Component {
     this.setState((state)=>{
         return {
           content: cowsay.think({
-            text : "I'm a moooodule",
+            text : faker.lorem.words(),
             e : "oO",
             T : "U "})
         }
